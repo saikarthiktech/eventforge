@@ -44,3 +44,10 @@ mongosh "$MONGODB_URI" database/mongodb/01_seed.js
 ```
 
 Do not commit real credentials. Use environment variables such as `DATABASE_URL`, `MONGODB_URI`, and `SESSION_SECRET`.
+
+## Team Members
+
+- Member 1: D Sai Karthik
+- Member 2: C Rohit Reddy
+- Member 3: Chinnala Manish Ranga
+
