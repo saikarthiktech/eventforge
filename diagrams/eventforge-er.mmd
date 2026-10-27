@@ -1,0 +1,83 @@
+erDiagram
+    USERS ||--o{ EVENTS : organizes
+    USERS ||--o| VENDORS : owns
+    EVENTS ||--o{ BOOKINGS : contains
+    VENDORS ||--o{ SERVICES : offers
+    SERVICES ||--o{ BOOKINGS : selected_in
+    SERVICES ||--o{ AVAILABILITY_SLOTS : has
+    EVENTS ||--o{ PAYMENTS : receives
+    BOOKINGS ||--o{ PAYMENTS : settled_by
+    USERS ||--o{ REVIEWS : writes
+    VENDORS ||--o{ REVIEWS : receives
+    EVENTS ||--o{ REVIEWS : associated_with
+
+    USERS {
+      uuid user_id PK
+      varchar full_name
+      varchar email UK
+      varchar password_hash
+      varchar role
+      timestamptz created_at
+    }
+    EVENTS {
+      uuid event_id PK
+      uuid organizer_id FK
+      varchar event_name
+      varchar event_type
+      date event_date
+      time start_time
+      time end_time
+      varchar venue_city
+      int expected_guests
+      varchar status
+    }
+    VENDORS {
+      uuid vendor_id PK
+      uuid owner_user_id FK
+      varchar business_name UK
+      varchar category
+      varchar city
+      numeric rating
+      varchar approval_status
+    }
+    SERVICES {
+      uuid service_id PK
+      uuid vendor_id FK
+      varchar service_name
+      text description
+      numeric base_price
+      int capacity
+      boolean active
+    }
+    AVAILABILITY_SLOTS {
+      uuid slot_id PK
+      uuid service_id FK
+      date slot_date
+      time start_time
+      time end_time
+      varchar status
+    }
+    BOOKINGS {
+      uuid booking_id PK
+      uuid event_id FK
+      uuid service_id FK
+      numeric agreed_price
+      varchar booking_status
+      timestamptz booked_at
+    }
+    PAYMENTS {
+      uuid payment_id PK
+      uuid event_id FK
+      uuid booking_id FK
+      numeric amount
+      varchar payment_status
+      varchar payment_method
+    }
+    REVIEWS {
+      uuid review_id PK
+      uuid event_id FK
+      uuid vendor_id FK
+      uuid reviewer_id FK
+      int rating
+      text comment
+    }
