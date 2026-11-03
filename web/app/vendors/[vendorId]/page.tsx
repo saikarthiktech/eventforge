@@ -1,12 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 
 type Service = {
   name: string;
   description: string;
-  tags: string[];
+  tags?: string[];
   priceBand: string;
+};
+
+type PortfolioItem = {
+  title: string;
+  url?: string;
+};
+
+type FaqItem = {
+  question: string;
+  answer: string;
 };
 
 type Vendor = {
@@ -16,23 +27,17 @@ type Vendor = {
   serviceAreas: string[];
   bio: string;
   services: Service[];
-  portfolio?: {
-    title: string;
-    url: string;
-  }[];
-  faq?: {
-    question: string;
-    answer: string;
-  }[];
+  portfolio?: PortfolioItem[];
+  faq?: FaqItem[];
 };
 
-export default function VendorDetailsPage({
-  params,
-}: {
-  params: { vendorId: string };
-}) {
+export default function VendorDetailsPage() {
+  const params = useParams();
+  const vendorId = params.vendorId as string;
+
   const [vendor, setVendor] = useState<Vendor | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function loadVendor() {
@@ -40,30 +45,52 @@ export default function VendorDetailsPage({
         const response = await fetch("/api/vendors");
         const data = await response.json();
 
+        if (!response.ok || !data.success) {
+          throw new Error(data.error || "Unable to load vendor");
+        }
+
         const selectedVendor = data.vendors.find(
-          (item: Vendor) => item.vendorId === params.vendorId
+          (item: Vendor) => item.vendorId === vendorId
         );
 
-        setVendor(selectedVendor || null);
-      } catch (error) {
-        console.error("Unable to load vendor:", error);
+        if (!selectedVendor) {
+          setError("Vendor not found");
+        } else {
+          setVendor(selectedVendor);
+        }
+      } catch (loadError) {
+        console.error(loadError);
+        setError("Unable to load vendor details");
       } finally {
         setLoading(false);
       }
     }
 
-    loadVendor();
-  }, [params.vendorId]);
+    if (vendorId) {
+      loadVendor();
+    }
+  }, [vendorId]);
 
   if (loading) {
-    return <main className="vendor-detail-page">Loading vendor...</main>;
-  }
-
-  if (!vendor) {
     return (
       <main className="vendor-detail-page">
-        <h1>Vendor not found</h1>
-        <a href="/vendors">Back to vendors</a>
+        <div className="vendor-detail-card">
+          <h1>Loading vendor...</h1>
+        </div>
+      </main>
+    );
+  }
+
+  if (error || !vendor) {
+    return (
+      <main className="vendor-detail-page">
+        <div className="vendor-detail-card">
+          <h1>Vendor not found</h1>
+          <p>{error}</p>
+          <a className="primary-button" href="/vendors">
+            Back to vendors
+          </a>
+        </div>
       </main>
     );
   }
@@ -115,6 +142,14 @@ export default function VendorDetailsPage({
               <div>
                 <h3>{service.name}</h3>
                 <p>{service.description}</p>
+
+                {service.tags && service.tags.length > 0 && (
+                  <div className="vendor-locations detail-tags">
+                    {service.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <strong>{service.priceBand}</strong>
