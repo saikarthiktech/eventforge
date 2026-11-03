@@ -36,7 +36,7 @@ export default function Home() {
         </div>
 
         <div className="nav-links">
-          <a href="#dashboard">Dashboard</a>
+          <a href="/dashboard">Dashboard</a>
           <a href="#features">Features</a>
           <a href="#workflow">How it works</a>
           <button className="outline-button">Sign in</button>

@@ -1231,5 +1231,217 @@ button {
     max-width: none;
   }
 }
+.dashboard-page {
+  min-height: 100vh;
+  background: var(--cream);
+}
+
+.dashboard-page .brand {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.dashboard-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logout-button {
+  padding: 10px 16px;
+  color: white;
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.dashboard-content {
+  max-width: 1176px;
+  margin: 0 auto;
+  padding: 70px 32px;
+}
+
+.dashboard-welcome {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 45px;
+}
+
+.dashboard-welcome h1 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.dashboard-welcome p:last-child {
+  max-width: 520px;
+  margin-top: 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.dashboard-create {
+  white-space: nowrap;
+  color: white;
+  text-decoration: none;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 60px;
+}
+
+.dashboard-stat {
+  padding: 24px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+}
+
+.dashboard-stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.dashboard-stat strong {
+  display: block;
+  margin-top: 14px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+}
+
+.dashboard-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.dashboard-section-heading h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 30px;
+}
+
+.dashboard-section-heading .small-button {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.dashboard-event-list {
+  display: grid;
+  gap: 14px;
+}
+
+.dashboard-event-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 23px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+}
+
+.event-status {
+  display: inline-block;
+  padding: 6px 9px;
+  color: #397959;
+  background: #ddf2e5;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.dashboard-event-card h3 {
+  margin: 12px 0 6px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+}
+
+.dashboard-event-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.dashboard-event-date {
+  display: grid;
+  gap: 5px;
+  color: var(--muted);
+  text-align: right;
+  font-size: 12px;
+}
+
+.dashboard-event-date strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.dashboard-empty,
+.dashboard-loading {
+  padding: 35px;
+  text-align: center;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+}
+
+.dashboard-empty h3 {
+  margin-top: 0;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.dashboard-empty p {
+  color: var(--muted);
+}
+
+.dashboard-empty .primary-button {
+  display: inline-block;
+  margin-top: 12px;
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .dashboard-content {
+    padding: 45px 20px;
+  }
+
+  .dashboard-welcome {
+    display: block;
+  }
+
+  .dashboard-create {
+    display: inline-block;
+    margin-top: 25px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-event-card {
+    display: block;
+  }
+
+  .dashboard-event-date {
+    margin-top: 18px;
+    text-align: left;
+  }
+
+  .dashboard-nav-actions .outline-button {
+    display: none;
+  }
+}
 
 
