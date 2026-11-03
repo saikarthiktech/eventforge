@@ -1443,5 +1443,131 @@ button {
     display: none;
   }
 }
+.vendor-dashboard-page {
+  min-height: 100vh;
+  background: var(--cream);
+}
+
+.vendor-dashboard-page .brand {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.vendor-dashboard-content {
+  max-width: 1176px;
+  margin: 0 auto;
+  padding: 70px 32px;
+}
+
+.vendor-dashboard-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.availability-card {
+  display: grid;
+  gap: 18px;
+  padding: 28px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 15px 45px rgba(23, 32, 42, 0.06);
+}
+
+.availability-card h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 27px;
+}
+
+.availability-card label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.availability-card input,
+.availability-card select {
+  width: 100%;
+  padding: 13px 14px;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+}
+
+.availability-card input:focus,
+.availability-card select:focus {
+  border-color: var(--purple);
+}
+
+.availability-list {
+  display: grid;
+  gap: 12px;
+}
+
+.availability-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 15px;
+  padding: 16px;
+  background: var(--cream);
+  border-radius: 10px;
+}
+
+.availability-item > div:first-child {
+  display: grid;
+  gap: 5px;
+}
+
+.availability-item span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.availability-time {
+  display: grid;
+  gap: 5px;
+  text-align: right;
+}
+
+.availability-time strong {
+  font-size: 13px;
+}
+
+.availability-status {
+  padding: 6px 8px;
+  color: #397959 !important;
+  background: #ddf2e5;
+  border-radius: 6px;
+  font-size: 10px !important;
+  font-weight: 700;
+}
+
+@media (max-width: 850px) {
+  .vendor-dashboard-content {
+    padding: 45px 20px;
+  }
+
+  .vendor-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .availability-item {
+    grid-template-columns: 1fr;
+  }
+
+  .availability-time {
+    text-align: left;
+  }
+}
 
 
