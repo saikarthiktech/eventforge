@@ -164,6 +164,10 @@ export default function VendorDashboardPage() {
           <a className="outline-button" href="/vendors">
             View marketplace
           </a>
+          <a className="outline-button" href="/vendor-bookings">
+             Booking requests
+          </a>
+
 
           <button className="logout-button" onClick={handleLogout}>
             Logout

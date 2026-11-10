@@ -1569,5 +1569,108 @@ button {
     text-align: left;
   }
 }
+.vendor-bookings-page {
+  min-height: 100vh;
+  background: var(--cream);
+}
+
+.vendor-bookings-page .brand {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.vendor-bookings-content {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 70px 32px;
+}
+
+.booking-request-list {
+  display: grid;
+  gap: 15px;
+}
+
+.booking-request-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 25px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(23, 32, 42, 0.05);
+}
+
+.booking-request-main h2 {
+  margin: 13px 0 6px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 24px;
+}
+
+.booking-service-name {
+  margin: 0;
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.booking-event-details {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.booking-price {
+  margin: 12px 0 0;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.booking-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.accept-button,
+.reject-button {
+  padding: 11px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.accept-button {
+  color: white;
+  background: #397959;
+  border: 1px solid #397959;
+}
+
+.reject-button {
+  color: #a74435;
+  background: #fff0eb;
+  border: 1px solid #f1c7bb;
+}
+
+.accept-button:disabled,
+.reject-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+@media (max-width: 700px) {
+  .vendor-bookings-content {
+    padding: 45px 20px;
+  }
+
+  .booking-request-card {
+    display: block;
+  }
+
+  .booking-actions {
+    margin-top: 20px;
+  }
+}
 
 
