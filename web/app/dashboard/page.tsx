@@ -96,6 +96,10 @@ export default function DashboardPage() {
           <a className="outline-button" href="/payments">
             Payments
           </a>
+          <a className="outline-button" href="/reviews/new">
+            Write a review
+          </a>
+
 
 
 

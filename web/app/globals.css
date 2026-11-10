@@ -1925,5 +1925,95 @@ button {
     margin-top: 15px;
   }
 }
+.review-page {
+  min-height: 100vh;
+  background: var(--cream);
+}
+
+.review-page .brand {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.review-content {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  align-items: start;
+  gap: 75px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 75px 32px;
+}
+
+.review-intro h1 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(42px, 6vw, 64px);
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.review-intro > p:last-child {
+  max-width: 400px;
+  margin-top: 22px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.review-card {
+  display: grid;
+  gap: 18px;
+  padding: 30px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 15px 45px rgba(23, 32, 42, 0.06);
+}
+
+.review-card label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.review-card input,
+.review-card select,
+.review-card textarea {
+  width: 100%;
+  padding: 13px 14px;
+  color: var(--ink);
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+  font: inherit;
+}
+
+.review-card textarea {
+  resize: vertical;
+}
+
+.review-card input:focus,
+.review-card select:focus,
+.review-card textarea:focus {
+  border-color: var(--purple);
+}
+
+.review-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .review-content {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    padding: 50px 20px;
+  }
+}
 
 
