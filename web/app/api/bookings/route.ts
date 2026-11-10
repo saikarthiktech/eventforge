@@ -315,10 +315,26 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     );
-  } catch (error) {
+    } catch (error) {
     await client.query("ROLLBACK");
 
     console.error("Booking creation failed:", error);
+
+    if (
+      error &&
+      typeof error === "object" &&
+      "code" in error &&
+      error.code === "P0001" &&
+      "message" in error
+    ) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: String(error.message),
+        },
+        { status: 409 }
+      );
+    }
 
     return NextResponse.json(
       {
@@ -328,6 +344,7 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   } finally {
+
     client.release();
   }
 }
