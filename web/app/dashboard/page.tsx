@@ -93,6 +93,10 @@ export default function DashboardPage() {
           <a className="outline-button" href="/bookings">
             My bookings
           </a>
+          <a className="outline-button" href="/payments">
+            Payments
+          </a>
+
 
 
           <button className="logout-button" onClick={handleLogout}>
