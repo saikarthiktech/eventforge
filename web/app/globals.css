@@ -2015,5 +2015,66 @@ button {
     padding: 50px 20px;
   }
 }
+.vendor-rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  background: var(--cream);
+  border-radius: 10px;
+}
+
+.vendor-rating-summary strong {
+  color: var(--purple);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 28px;
+}
+
+.vendor-rating-summary span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.vendor-reviews-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.vendor-review-item {
+  padding: 18px;
+  background: var(--cream);
+  border-radius: 10px;
+}
+
+.vendor-review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.vendor-review-stars {
+  color: #d48b24;
+  letter-spacing: 2px;
+}
+
+.vendor-review-item p {
+  margin: 12px 0 8px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.vendor-review-item small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.vendor-no-reviews {
+  padding: 18px;
+  color: var(--muted);
+  background: var(--cream);
+  border-radius: 10px;
+}
 
 

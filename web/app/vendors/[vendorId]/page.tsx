@@ -19,6 +19,13 @@ type FaqItem = {
   question: string;
   answer: string;
 };
+type Review = {
+  review_id: string;
+  rating: number;
+  comment: string;
+  created_at: string;
+  reviewer_name: string;
+};
 
 type Vendor = {
   vendorId: string;
@@ -36,6 +43,7 @@ export default function VendorDetailsPage() {
   const vendorId = params.vendorId as string;
 
   const [vendor, setVendor] = useState<Vendor | null>(null);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -58,6 +66,16 @@ export default function VendorDetailsPage() {
         } else {
           setVendor(selectedVendor);
         }
+        const reviewsResponse = await fetch(
+          `/api/reviews?vendorId=${vendorId}`
+        );
+
+        const reviewsData = await reviewsResponse.json();
+
+        if (reviewsResponse.ok && reviewsData.success) {
+          setReviews(reviewsData.reviews);
+        }
+
       } catch (loadError) {
         console.error(loadError);
         setError("Unable to load vendor details");
@@ -186,6 +204,51 @@ export default function VendorDetailsPage() {
             </div>
           </>
         )}
+        <h2>Reviews and ratings</h2>
+
+{reviews.length === 0 ? (
+  <div className="vendor-no-reviews">
+    <p>No reviews yet.</p>
+  </div>
+) : (
+  <>
+    <div className="vendor-rating-summary">
+      <strong>
+        {(
+          reviews.reduce((total, review) => total + review.rating, 0) /
+          reviews.length
+        ).toFixed(1)}
+        / 5
+      </strong>
+
+      <span>
+        Based on {reviews.length}{" "}
+        {reviews.length === 1 ? "review" : "reviews"}
+      </span>
+    </div>
+
+    <div className="vendor-reviews-list">
+      {reviews.map((review) => (
+        <article className="vendor-review-item" key={review.review_id}>
+          <div className="vendor-review-header">
+            <strong>{review.reviewer_name}</strong>
+
+            <span className="vendor-review-stars">
+              {"★".repeat(review.rating)}
+              {"☆".repeat(5 - review.rating)}
+            </span>
+          </div>
+
+          <p>{review.comment}</p>
+
+          <small>
+            {new Date(review.created_at).toLocaleDateString()}
+          </small>
+        </article>
+      ))}
+    </div>
+  </>
+)}
 
         <a className="primary-button detail-book-button" href="/events/new">
           Create an event with this vendor
